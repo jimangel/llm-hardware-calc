@@ -577,11 +577,11 @@ export default function LLMCalculator() {
         </header>
 
         {/* Input Section */}
-        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6 mb-8">
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 sm:p-6 mb-8">
           <div className="space-y-4">
             <div>
               <label className="block text-sm text-gray-400 mb-2">Hugging Face Model URL</label>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   value={url}
@@ -593,7 +593,7 @@ export default function LLMCalculator() {
                 <button
                   onClick={fetchModelConfig}
                   disabled={loading || !url.trim()}
-                  className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 disabled:from-gray-700 disabled:to-gray-700 rounded-lg font-medium transition-all flex items-center gap-2 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 disabled:from-gray-700 disabled:to-gray-700 rounded-lg font-medium transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -605,15 +605,15 @@ export default function LLMCalculator() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-sm text-gray-500">
-              <span>or</span>
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-500">
+              <span>or enter manually:</span>
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="text"
                   value={manualParams}
                   onChange={(e) => setManualParams(e.target.value)}
                   placeholder="e.g., 70B, 405B, 671B"
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-40"
+                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-full sm:w-40"
                 />
                 <button
                   onClick={handleManualParams}
@@ -636,12 +636,12 @@ export default function LLMCalculator() {
         {modelInfo && (
           <>
             {/* Model Info Card */}
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6 mb-8">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 sm:p-6 mb-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                    <h2 className="text-xl font-semibold text-gray-100">Model Loaded</h2>
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-100">Model Loaded</h2>
                   </div>
                   <p className="text-gray-400 text-sm">{modelInfo.repoId}</p>
                 </div>
@@ -657,24 +657,24 @@ export default function LLMCalculator() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gray-800/50 rounded-xl p-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <div className="bg-gray-800/50 rounded-xl p-3 sm:p-4">
                   <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Parameters</p>
-                  <p className="text-2xl font-bold text-emerald-400">
+                  <p className="text-xl sm:text-2xl font-bold text-emerald-400">
                     {modelInfo.numParams ? formatNumber(modelInfo.numParams) : 'Unknown'}
                   </p>
                 </div>
-                <div className="bg-gray-800/50 rounded-xl p-4">
+                <div className="bg-gray-800/50 rounded-xl p-3 sm:p-4">
                   <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Architecture</p>
-                  <p className="text-lg font-medium text-gray-200 truncate">{modelInfo.architecture}</p>
+                  <p className="text-base sm:text-lg font-medium text-gray-200 truncate">{modelInfo.architecture}</p>
                 </div>
-                <div className="bg-gray-800/50 rounded-xl p-4">
+                <div className="bg-gray-800/50 rounded-xl p-3 sm:p-4">
                   <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Layers</p>
-                  <p className="text-2xl font-bold text-cyan-400">{modelInfo.numLayers || '—'}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-cyan-400">{modelInfo.numLayers || '—'}</p>
                 </div>
-                <div className="bg-gray-800/50 rounded-xl p-4">
+                <div className="bg-gray-800/50 rounded-xl p-3 sm:p-4">
                   <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Hidden Size</p>
-                  <p className="text-2xl font-bold text-blue-400">{modelInfo.hiddenSize?.toLocaleString() || '—'}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-blue-400">{modelInfo.hiddenSize?.toLocaleString() || '—'}</p>
                 </div>
               </div>
 
@@ -759,8 +759,8 @@ export default function LLMCalculator() {
             </div>
 
             {/* Memory Requirements */}
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6 mb-8">
-              <h2 className="text-xl font-semibold text-gray-100 mb-6 flex items-center gap-2">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 sm:p-6 mb-8">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-100 mb-4 sm:mb-6 flex items-center gap-2">
                 <HardDrive className="w-5 h-5 text-cyan-400" />
                 Memory Requirements by Precision
               </h2>
@@ -791,18 +791,18 @@ export default function LLMCalculator() {
                         </span>
                       </div>
                       
-                      <div className="grid grid-cols-3 gap-4 text-sm">
-                        <div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 text-sm">
+                        <div className="flex justify-between sm:block">
                           <span className="text-gray-500">Weights:</span>
-                          <span className="text-gray-300 ml-2">{formatBytes(memory.weights)}</span>
+                          <span className="text-gray-300 sm:ml-2">{formatBytes(memory.weights)}</span>
                         </div>
-                        <div>
+                        <div className="flex justify-between sm:block">
                           <span className="text-gray-500">KV Cache:</span>
-                          <span className="text-gray-300 ml-2">{formatBytes(memory.kvCache)}</span>
+                          <span className="text-gray-300 sm:ml-2">{formatBytes(memory.kvCache)}</span>
                         </div>
-                        <div>
+                        <div className="flex justify-between sm:block">
                           <span className="text-gray-500">Activations:</span>
-                          <span className="text-gray-300 ml-2">{formatBytes(memory.activations)}</span>
+                          <span className="text-gray-300 sm:ml-2">{formatBytes(memory.activations)}</span>
                         </div>
                       </div>
                     </div>
@@ -812,13 +812,73 @@ export default function LLMCalculator() {
             </div>
 
             {/* Hardware Requirements */}
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
-              <h2 className="text-xl font-semibold text-gray-100 mb-6 flex items-center gap-2">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-100 mb-4 sm:mb-6 flex items-center gap-2">
                 <Server className="w-5 h-5 text-emerald-400" />
                 Hardware Requirements
               </h2>
 
-              <div className="overflow-x-auto">
+              {/* Mobile Card View */}
+              <div className="md:hidden space-y-3">
+                {ACCELERATORS.map((acc) => (
+                  <div key={acc.name} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <div className="font-medium text-gray-200">
+                          {acc.name}
+                          {acc.type === 'tpu' && <span className="ml-2 text-xs px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded">TPU</span>}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {acc.interconnect}
+                          {acc.maxUnits !== null
+                            ? ` • max ${acc.maxUnits}`
+                            : ` • ${acc.perNode}/node`}
+                        </div>
+                      </div>
+                      <span className="text-gray-400 text-sm">{acc.memory}GB</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {PRECISIONS.slice(1, 4).map((precision) => {
+                        const memory = calculateMemory(modelInfo, precision, contextLength, batchSize);
+                        if (!memory) return (
+                          <div key={precision.name} className="text-center p-2 bg-gray-900/50 rounded-lg">
+                            <div className="text-xs mb-1" style={{ color: precision.color }}>{precision.name}</div>
+                            <span className="text-gray-500">—</span>
+                          </div>
+                        );
+
+                        const req = calculateAcceleratorRequirements(memory.withOverhead, acc);
+                        const unitLabel = acc.type === 'tpu' ? 'chip' : (acc.type === 'soc' ? 'device' : 'GPU');
+                        const unitsLabel = acc.type === 'tpu' ? 'chips' : (acc.type === 'soc' ? 'devices' : 'GPUs');
+
+                        if (!req.isValid) {
+                          return (
+                            <div key={precision.name} className="text-center p-2 bg-gray-900/50 rounded-lg">
+                              <div className="text-xs mb-1" style={{ color: precision.color }}>{precision.name}</div>
+                              <span className="text-red-500 text-lg">✗</span>
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <div key={precision.name} className="text-center p-2 bg-gray-900/50 rounded-lg">
+                            <div className="text-xs mb-1" style={{ color: precision.color }}>{precision.name}</div>
+                            <div className={req.fits ? 'text-emerald-400' : 'text-gray-300'}>
+                              <span className="font-bold">{req.unitsNeeded}</span>
+                              <span className="text-xs text-gray-500 block">
+                                {req.unitsNeeded === 1 ? unitLabel : unitsLabel}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-700">
@@ -841,8 +901,8 @@ export default function LLMCalculator() {
                           </div>
                           <div className="text-xs text-gray-500">
                             {acc.interconnect}
-                            {acc.maxUnits !== null 
-                              ? ` • max ${acc.maxUnits}` 
+                            {acc.maxUnits !== null
+                              ? ` • max ${acc.maxUnits}`
                               : ` • ${acc.perNode}/node`}
                           </div>
                         </td>
@@ -850,9 +910,9 @@ export default function LLMCalculator() {
                         {PRECISIONS.slice(1, 4).map((precision) => {
                           const memory = calculateMemory(modelInfo, precision, contextLength, batchSize);
                           if (!memory) return <td key={precision.name} className="text-center py-3 px-4 text-gray-500">—</td>;
-                          
+
                           const req = calculateAcceleratorRequirements(memory.withOverhead, acc);
-                          
+
                           // Show red X for invalid/impossible configurations
                           if (!req.isValid) {
                             return (
@@ -866,20 +926,20 @@ export default function LLMCalculator() {
                               </td>
                             );
                           }
-                          
+
                           // Determine unit label based on type
                           const unitLabel = acc.type === 'tpu' ? 'chip' : (acc.type === 'soc' ? 'device' : 'GPU');
                           const unitsLabel = acc.type === 'tpu' ? 'chips' : (acc.type === 'soc' ? 'devices' : 'GPUs');
-                          
+
                           return (
                             <td key={precision.name} className="text-center py-3 px-4">
                               <div className={`inline-flex flex-col items-center ${req.fits ? 'text-emerald-400' : 'text-gray-300'}`}>
                                 <span className="font-bold text-lg">{req.unitsNeeded}</span>
                                 <span className="text-xs text-gray-500">
-                                  {req.unitsNeeded === 1 
-                                    ? `single ${unitLabel}` 
-                                    : req.nodesNeeded > 1 
-                                      ? `${req.nodesNeeded} nodes` 
+                                  {req.unitsNeeded === 1
+                                    ? `single ${unitLabel}`
+                                    : req.nodesNeeded > 1
+                                      ? `${req.nodesNeeded} nodes`
                                       : `${req.unitsNeeded} ${unitsLabel}`}
                                 </span>
                               </div>
@@ -904,9 +964,9 @@ export default function LLMCalculator() {
 
         {/* Example Models */}
         {!modelInfo && (
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 sm:p-6">
             <h2 className="text-lg font-semibold text-gray-100 mb-4">Try these models</h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {[
                 { name: 'Gemma 2 2B', url: 'https://huggingface.co/google/gemma-2-2b' },
                 { name: 'Qwen2.5 7B', url: 'https://huggingface.co/Qwen/Qwen2.5-7B' },
@@ -920,7 +980,7 @@ export default function LLMCalculator() {
                 <button
                   key={model.name}
                   onClick={() => setUrl(model.url)}
-                  className="px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-emerald-500/50 rounded-lg text-sm text-gray-300 hover:text-emerald-400 transition-all"
+                  className="px-3 sm:px-4 py-2.5 sm:py-2 min-h-[44px] bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-emerald-500/50 rounded-lg text-sm text-gray-300 hover:text-emerald-400 transition-all"
                 >
                   {model.name}
                 </button>
