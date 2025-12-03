@@ -1,0 +1,134 @@
+{
+  "accelerators": [
+    {
+      "name": "NVIDIA B200 180GB",
+      "memory_gb": 180,
+      "interconnect": "NVLink",
+      "tier": "datacenter",
+      "type": "gpu",
+      "per_node": 8,
+      "max_units": null,
+      "notes": "DGX B200 node"
+    },
+    {
+      "name": "NVIDIA H100/A100 80GB",
+      "memory_gb": 80,
+      "interconnect": "NVLink",
+      "tier": "datacenter",
+      "type": "gpu",
+      "per_node": 8,
+      "max_units": null,
+      "notes": "DGX/HGX node"
+    },
+    {
+      "name": "NVIDIA A100 40GB",
+      "memory_gb": 40,
+      "interconnect": "NVLink",
+      "tier": "datacenter",
+      "type": "gpu",
+      "per_node": 8,
+      "max_units": null,
+      "notes": "DGX A100 node"
+    },
+    {
+      "name": "NVIDIA RTX Pro 6000",
+      "memory_gb": 96,
+      "interconnect": "NVLink",
+      "tier": "workstation",
+      "type": "gpu",
+      "per_node": 8,
+      "max_units": null,
+      "notes": "Workstation config"
+    },
+    {
+      "name": "NVIDIA RTX 6000 Ada",
+      "memory_gb": 48,
+      "interconnect": "NVLink",
+      "tier": "workstation",
+      "type": "gpu",
+      "per_node": 1,
+      "max_units": 8,
+      "notes": null
+    },
+    {
+      "name": "NVIDIA RTX 5090",
+      "memory_gb": 32,
+      "interconnect": "NVLink",
+      "tier": "consumer",
+      "type": "gpu",
+      "per_node": 1,
+      "max_units": 8,
+      "notes": null
+    },
+    {
+      "name": "NVIDIA RTX 4090",
+      "memory_gb": 24,
+      "interconnect": "NVLink",
+      "tier": "consumer",
+      "type": "gpu",
+      "per_node": 1,
+      "max_units": 8,
+      "notes": null
+    },
+    {
+      "name": "Apple M4 Ultra",
+      "memory_gb": 512,
+      "interconnect": "Unified",
+      "tier": "workstation",
+      "type": "soc",
+      "per_node": 1,
+      "max_units": 1,
+      "notes": "Unified memory, not networkable"
+    },
+    {
+      "name": "Apple M4 Max",
+      "memory_gb": 128,
+      "interconnect": "Unified",
+      "tier": "workstation",
+      "type": "soc",
+      "per_node": 1,
+      "max_units": 1,
+      "notes": "Unified memory, not networkable"
+    },
+    {
+      "name": "TPU v5e",
+      "memory_gb": 16,
+      "interconnect": "ICI",
+      "tier": "cloud",
+      "type": "tpu",
+      "per_node": 8,
+      "max_units": 256,
+      "notes": "16x16 2D torus max, inference optimized"
+    },
+    {
+      "name": "TPU v5p",
+      "memory_gb": 96,
+      "interconnect": "ICI",
+      "tier": "cloud",
+      "type": "tpu",
+      "per_node": 4,
+      "max_units": 512,
+      "notes": "3D torus, training optimized (max 8960 in superpod)"
+    },
+    {
+      "name": "TPU v6e (Trillium)",
+      "memory_gb": 32,
+      "interconnect": "ICI",
+      "tier": "cloud",
+      "type": "tpu",
+      "per_node": 8,
+      "max_units": 256,
+      "notes": "16x16 2D torus max, 256x256 MXU"
+    },
+    {
+      "name": "TPU v7x (Ironwood)",
+      "memory_gb": 192,
+      "interconnect": "ICI",
+      "tier": "cloud",
+      "type": "tpu",
+      "per_node": 4,
+      "max_units": 2048,
+      "notes": "3D torus, dual-chiplet, 7.4TB/s HBM BW (max 9216 in pod)"
+    }
+  ]
+}
